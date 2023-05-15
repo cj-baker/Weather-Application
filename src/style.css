@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+  display: block;
+  background-color: black;
+  color: whitesmoke;
+}
+.container {
+  display: block;
+  width: 70%;
+  height: 60%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-color: whitesmoke;
+  border-width: 2px;
+  border-radius: 15px;
+  background: black;
+  background-size: 100%;
+}
