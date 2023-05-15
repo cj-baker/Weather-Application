@@ -15,6 +15,76 @@
   </head>
   <body>
     <div class="conatiner">
+      <form id="city-form">
+        <div class="row g-2">
+          <div class="col-8">
+            <div class="p-3">
+              <div class="input-group mb-3">
+                <input
+                  id="city-input"
+                  type="text"
+                  class="form-control search-bar"
+                  placeholder="Search for a city"
+                  aria-label="Search for a city"
+                  aria-describedby="basic-addon2"
+                  autocomplete="off"
+                  autofocus="on"
+                />
+                <div class="input-group-append">
+                  <button class="btn search-button" type="submit">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="p-3">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                id="current-location-button"
+              >
+                Current Location
+              </button>
+            </div>
+            <div class="col-2">
+                <div class="p-3">
+                    <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked
+                />
+                <label
+                  class="btn fahrenheit"
+                  for="btnradio1"
+                  id="fahrenheit-button"
+                  >F°</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label class="btn celsius" for="btnradio2" id="celsius-button"
+                  >C°</label
+                >
+                </div>
+            </div>
+          </div>
+        </div>
+      </form>
       <h1>
         <div class="row g-3">
           <div class="col-4">
