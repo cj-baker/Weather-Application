@@ -17,6 +17,33 @@ currentTime.innerHTML = now.toLocaleTimeString([], {
   minute: "2-digit",
 });
 
+let getCurrentLocation = document.querySelector("#current-location-button");
+getCurrentLocation.addEventListener("click", getLocalTemp);
+
+function getLocalTemp() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function showPosition(position) {
+  let longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
+  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showLocalTemperature);
+}
+function showLocalTemperature(response) {
+  let city = response.data.name;
+  let temperature = Math.round(response.data.main.temp);
+  let high = Math.round(response.data.main.temp_max);
+  let low = Math.round(response.data.main.temp_min);
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = `${temperature}F°`;
+  let currentLocation = document.querySelector("#current-location");
+  currentLocation.innerHTML = `${city}`;
+  document.querySelector("#current-high").innerHTML = `H: ${high}°`;
+  document.querySelector("#current-low").innerHTML = `L: ${low}°`;
+}
+
 function changeCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
