@@ -52,38 +52,39 @@
               </button>
             </div>
             <div class="col-2">
-                <div class="p-3">
-                    <div
-                class="btn-group"
-                role="group"
-                aria-label="Basic radio toggle button group"
-              >
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="btnradio"
-                  id="btnradio1"
-                  autocomplete="off"
-                  checked
-                />
-                <label
-                  class="btn fahrenheit"
-                  for="btnradio1"
-                  id="fahrenheit-button"
-                  >F°</label
+              <div class="p-3">
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
                 >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="btnradio"
+                    id="btnradio1"
+                    autocomplete="off"
+                    checked
+                  />
+                  <label
+                    class="btn fahrenheit"
+                    for="btnradio1"
+                    id="fahrenheit-button"
+                    >F°</label
+                  >
 
-                <input
-                  type="radio"
-                  class="btn-check"
-                  name="btnradio"
-                  id="btnradio2"
-                  autocomplete="off"
-                />
-                <label class="btn celsius" for="btnradio2" id="celsius-button"
-                  >C°</label
-                >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="btnradio"
+                    id="btnradio2"
+                    autocomplete="off"
+                  />
+                  <label class="btn celsius" for="btnradio2" id="celsius-button"
+                    >C°</label
+                  >
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,9 +92,9 @@
       <h1>
         <div class="row g-3">
           <div class="col-4">
-            <div>H: 47°</div>
+            <div class="current-range">H: 47°</div>
             <div>Vancouver</div>
-            <div>L: 34°</div>
+            <div class="current-range">L: 34°</div>
           </div>
           <div class="col-4">
             <div>
@@ -102,15 +103,16 @@
           </div>
           <div class="col-4">
             <div>43°</div>
-            <div>Sunday</div>
-            <div>10:46 AM PT</div>
+            <div class="current-day">Sunday</div>
+            <div class="current-time">10:46 AM PT</div>
           </div>
         </div>
       </h1>
-    
     </div>
-    <a href="https://github.com/cj-baker/Weather-Application">Source Code</a>
+    <div class="source-link">
+      <a href="https://github.com/cj-baker/Weather-Application">Source Code</a>
       <span class="coder">by Casey Baker </span>
+    </div>
     <script src="src/index.js"></script>
     <script
       src="https://kit.fontawesome.com/dbf5d821fc.js"
