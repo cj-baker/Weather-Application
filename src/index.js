@@ -29,8 +29,12 @@ function showCityTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityTemp = document.querySelector("#current-temp");
   let currentCity = document.querySelector("#current-location");
+  let high = Math.round(response.data.main.temp_max);
+  let low = Math.round(response.data.main.temp_min);
   cityTemp.innerHTML = `${temperature}°F`;
   currentCity.innerHTML = response.data.name;
+  document.querySelector("#current-high").innerHTML = `H: ${high}°`;
+  document.querySelector("#current-low").innerHTML = `L: ${low}°`;
 }
 
 let searchCity = document.querySelector("#city-form");
