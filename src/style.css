@@ -12,6 +12,7 @@ h1 {
 .container {
   display: block;
   margin: 50px;
+  margin-bottom: 5px;
   text-shadow: 2px 2px rgb(18, 35, 56);
   border-style: solid;
   border-color: whitesmoke;
@@ -39,10 +40,11 @@ h1 {
   background-color: #5ba8c4;
   border-color: rgb(33, 64, 101);
 }
-.source-link {
-  display: block;
-  margin: 0 auto;
+.btn-group {
+  text-shadow: 2px 2px rgb(18, 35, 56, 50%);
+  font-weight: bolder;
 }
+
 .current-day,
 .current-time,
 .current-range {
@@ -64,4 +66,8 @@ h1 {
   height: 34px;
   border-color: rgb(33, 64, 101);
   box-shadow: 2px 2px rgb(33, 64, 101, 70%);
+}
+.source-link {
+  display: block;
+  margin: 0 auto;
 }
