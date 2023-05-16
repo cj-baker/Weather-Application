@@ -6,12 +6,13 @@ body {
 }
 h1 {
   margin-bottom: 80px;
+  margin-top: 30px;
 }
 
 .container {
   display: block;
   margin: 50px;
-  text-shadow: 2px 2px rgb(33, 64, 101, 50%);
+  text-shadow: 2px 2px rgb(18, 35, 56);
   border-style: solid;
   border-color: whitesmoke;
   border-width: 2px;
@@ -27,7 +28,7 @@ h1 {
 }
 .search-bar,
 .search-button {
-  box-shadow: 2px 2px rgb(33, 64, 101);
+  box-shadow: 2px 2px rgb(33, 64, 101, 70%);
 }
 .search-button {
   background-color: rgb(33, 64, 101);
@@ -46,4 +47,21 @@ h1 {
 .current-time,
 .current-range {
   font-size: 18px;
+}
+.main-icon {
+  font-size: 130px;
+}
+.current-temp {
+  font-size: 72px;
+}
+.current-weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#current-location-button {
+  font-size: smaller;
+  height: 34px;
+  border-color: rgb(33, 64, 101);
+  box-shadow: 2px 2px rgb(33, 64, 101, 70%);
 }
