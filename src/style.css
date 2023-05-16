@@ -1,7 +1,7 @@
 body {
   text-align: center;
   display: block;
-  background-color: black;
+  background-color: rgb(28, 55, 87);
   color: whitesmoke;
 }
 h1 {
@@ -10,17 +10,33 @@ h1 {
 
 .container {
   display: block;
-  margin: 50px auto;
-  width: 80%;
+  margin: 50px;
+  text-shadow: 2px 2px rgb(33, 64, 101, 50%);
   border-style: solid;
   border-color: whitesmoke;
   border-width: 2px;
   border-radius: 15px;
   background: black;
   background-size: 100%;
+  background: linear-gradient(
+    109.6deg,
+    rgb(44, 83, 131) 18.9%,
+    rgb(95, 175, 201) 91.1%
+  );
+  box-shadow: 5px 5px rgb(18, 35, 56);
 }
-.settings {
-  padding: 20px;
+.search-bar,
+.search-button {
+  box-shadow: 2px 2px rgb(33, 64, 101);
+}
+.search-button {
+  background-color: rgb(33, 64, 101);
+  border-style: solid;
+  border-color: #5ba8c4;
+}
+:hover.search-button {
+  background-color: #5ba8c4;
+  border-color: rgb(33, 64, 101);
 }
 .source-link {
   display: block;
