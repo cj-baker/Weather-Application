@@ -16,3 +16,22 @@ currentTime.innerHTML = now.toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
 });
+
+function changeCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showCityTemperature);
+}
+
+function showCityTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let cityTemp = document.querySelector("#current-temp");
+  let currentCity = document.querySelector("#current-location");
+  cityTemp.innerHTML = `${temperature}°F`;
+  currentCity.innerHTML = response.data.name;
+}
+
+let searchCity = document.querySelector("#city-form");
+searchCity.addEventListener("submit", changeCity);

@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -92,7 +93,7 @@
         <div class="row g-3 current-weather">
           <div class="col-4">
             <div class="current-range">H: 47°</div>
-            <div>Vancouver</div>
+            <div id="current-location">Vancouver</div>
             <div class="current-range">L: 34°</div>
           </div>
           <div class="col-4">
@@ -101,7 +102,7 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="current-temp">43°</div>
+            <div class="current-temp" id="current-temp">43°</div>
             <div class="current-day">Sunday</div>
             <div class="current-time">10:46 AM PT</div>
           </div>
