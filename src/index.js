@@ -22,6 +22,7 @@ function showLocalTemperature(response) {
   fahrenheitTemp = response.data.main.temp;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
   document.querySelector("#current-low").innerHTML = `L: ${low}°`;
+  resetRadioButton();
 }
 
 function searchCity(city) {
