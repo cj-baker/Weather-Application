@@ -1,25 +1,3 @@
-let now = new Date();
-let currentDay = document.querySelector("div.current-day");
-let currentTime = document.querySelector("div.current-time");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-currentDay.innerHTML = day;
-currentTime.innerHTML = now.toLocaleTimeString([], {
-  hour: "2-digit",
-  minute: "2-digit",
-});
-
-let getCurrentLocation = document.querySelector("#current-location-button");
-getCurrentLocation.addEventListener("click", getLocalTemp);
-
 function getLocalTemp() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
@@ -41,16 +19,22 @@ function showLocalTemperature(response) {
   currentTemp.innerHTML = `${temperature}F°`;
   let currentLocation = document.querySelector("#current-location");
   currentLocation.innerHTML = `${city}`;
+  fahrenheitTemp = response.data.main.temp;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
   document.querySelector("#current-low").innerHTML = `L: ${low}°`;
 }
 
-function changeCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
+function searchCity(city) {
   let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(showCityTemperature);
+}
+
+function submitCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
+  resetRadioButton();
 }
 
 function showCityTemperature(response) {
@@ -111,15 +95,44 @@ function displayCelsius() {
   let celsiusTemp = (5 / 9) * fahrenheitTemp - 32;
   currentTemp.innerHTML = `${Math.round(celsiusTemp)}°C`;
 }
+function resetRadioButton() {
+  let radioButton = document.getElementById("btnradio1");
+  radioButton.checked = true;
+}
+
+searchCity("Vancouver");
 
 let fahrenheitTemp = null;
+
 let celsiusTemp = null;
 
-let searchCity = document.querySelector("#city-form");
-searchCity.addEventListener("submit", changeCity);
+let cityForm = document.querySelector("#city-form");
+cityForm.addEventListener("submit", submitCity);
 
 let fahrenheit = document.querySelector("#fahrenheit-button");
 fahrenheit.addEventListener("click", displayFahrenheit);
 
 let celsius = document.querySelector("#celsius-button");
 celsius.addEventListener("click", displayCelsius);
+
+let now = new Date();
+let currentDay = document.querySelector("div.current-day");
+let currentTime = document.querySelector("div.current-time");
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+currentDay.innerHTML = day;
+currentTime.innerHTML = now.toLocaleTimeString([], {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+let getCurrentLocation = document.querySelector("#current-location-button");
+getCurrentLocation.addEventListener("click", getLocalTemp);
