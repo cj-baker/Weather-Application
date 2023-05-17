@@ -50,6 +50,13 @@ h1 {
 .current-range {
   font-size: 18px;
 }
+.weather-details {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+.current-location {
+  line-height: 70%;
+}
 #main-icon {
   font-size: 130px;
 }

@@ -15,13 +15,15 @@ function showLocalTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let high = Math.round(response.data.main.temp_max);
   let low = Math.round(response.data.main.temp_min);
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = `${temperature}F°`;
-  let currentLocation = document.querySelector("#current-location");
-  currentLocation.innerHTML = `${city}`;
+  let wind = Math.round(response.data.wind.speed);
+  let condition = response.data.weather[0].description;
   fahrenheitTemp = response.data.main.temp;
+  document.querySelector("#current-temp").innerHTML = `${temperature}F°`;
+  document.querySelector("#current-location").innerHTML = `${city}`;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
   document.querySelector("#current-low").innerHTML = `L: ${low}°`;
+  document.querySelector("#wind-speed").innerHTML = `Wind: ${wind} mph`;
+  document.querySelector("#weather-condition").innerHTML = `${condition}`;
   resetRadioButton();
 }
 
@@ -39,16 +41,19 @@ function submitCity(event) {
 }
 
 function showCityTemperature(response) {
+  let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
-  let cityTemp = document.querySelector("#current-temp");
-  let currentCity = document.querySelector("#current-location");
   let high = Math.round(response.data.main.temp_max);
   let low = Math.round(response.data.main.temp_min);
+  let wind = Math.round(response.data.wind.speed);
+  let condition = response.data.weather[0].description;
   fahrenheitTemp = response.data.main.temp;
-  cityTemp.innerHTML = `${temperature}°F`;
-  currentCity.innerHTML = response.data.name;
+  document.querySelector("#current-temp").innerHTML = `${temperature}°F`;
+  document.querySelector("#current-location").innerHTML = `${city}`;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
   document.querySelector("#current-low").innerHTML = `L: ${low}°`;
+  document.querySelector("#wind-speed").innerHTML = `Wind: ${wind} mph`;
+  document.querySelector("#weather-condition").innerHTML = `${condition}`;
   updateIcon(response);
 }
 
