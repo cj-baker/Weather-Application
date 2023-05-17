@@ -32,6 +32,7 @@ function showPosition(position) {
   axios.get(`${apiUrl}`).then(showLocalTemperature);
 }
 function showLocalTemperature(response) {
+  console.log(response);
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let high = Math.round(response.data.main.temp_max);
@@ -62,6 +63,43 @@ function showCityTemperature(response) {
   currentCity.innerHTML = response.data.name;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
   document.querySelector("#current-low").innerHTML = `L: ${low}°`;
+  updateIcon(response);
+}
+
+function updateIcon(response) {
+  console.log(response);
+  let icon = response.data.weather[0].icon;
+  console.log(icon);
+  let iconElement = document.querySelector("#main-icon");
+  if (icon === "01d") {
+    iconElement.setAttribute("class", "fa-solid fa-sun fa-beat-fade");
+  } else if (icon === "01n") {
+    iconElement.setAttribute("class", "fa-solid fa-moon fa-beat-fade");
+  } else if (icon === "02d") {
+    iconElement.setAttribute("class", "fa-solid fa-cloud-sun fa-beat-fade");
+  } else if (icon === "02n") {
+    iconElement.setAttribute("class", "fa-solid fa-cloud-moon fa-beat-fade");
+  } else if (
+    icon === "03d" ||
+    icon === "03n" ||
+    icon === "04d" ||
+    icon === "04n"
+  ) {
+    iconElement.setAttribute("class", "fa-solid fa-cloud fa-beat-fade");
+  } else if (icon === "09d" || icon === "09n") {
+    iconElement.setAttribute("class", "fa-solid fa-cloud-rain fa-beat-fade");
+  } else if (icon === "10d" || icon === "10n") {
+    iconElement.setAttribute(
+      "class",
+      "fa-solid fa-cloud-showers-heavy fa-beat-fade"
+    );
+  } else if (icon === "11d" || icon === "11n") {
+    iconElement.setAttribute("class", "fa-solid fa-cloud-bolt fa-beat-fade");
+  } else if (icon === "13d" || icon === "13n") {
+    iconElement.setAttribute("class", "fa-solid fa-snowflake fa-beat-fade");
+  } else {
+    iconElement.setAttribute("class", "fa-solid fa-smog fa-beat-fade");
+  }
 }
 
 let searchCity = document.querySelector("#city-form");
