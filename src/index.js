@@ -59,6 +59,7 @@ function showCityTemperature(response) {
   let currentCity = document.querySelector("#current-location");
   let high = Math.round(response.data.main.temp_max);
   let low = Math.round(response.data.main.temp_min);
+  fahrenheitTemp = response.data.main.temp;
   cityTemp.innerHTML = `${temperature}°F`;
   currentCity.innerHTML = response.data.name;
   document.querySelector("#current-high").innerHTML = `H: ${high}°`;
@@ -101,6 +102,24 @@ function updateIcon(response) {
     iconElement.setAttribute("class", "fa-solid fa-smog fa-beat-fade");
   }
 }
+function displayFahrenheit() {
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
+}
+function displayCelsius() {
+  let currentTemp = document.querySelector("#current-temp");
+  let celsiusTemp = (5 / 9) * fahrenheitTemp - 32;
+  currentTemp.innerHTML = `${Math.round(celsiusTemp)}°C`;
+}
+
+let fahrenheitTemp = null;
+let celsiusTemp = null;
 
 let searchCity = document.querySelector("#city-form");
 searchCity.addEventListener("submit", changeCity);
+
+let fahrenheit = document.querySelector("#fahrenheit-button");
+fahrenheit.addEventListener("click", displayFahrenheit);
+
+let celsius = document.querySelector("#celsius-button");
+celsius.addEventListener("click", displayCelsius);
