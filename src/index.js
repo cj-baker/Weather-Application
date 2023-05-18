@@ -92,7 +92,25 @@ function resetRadioButton() {
 
 function displayForecast() {
   let forecast = document.querySelector("#forecast");
-  forecast.innerHTML;
+  let forecastHTML = `<h2><div class="row">`;
+  let days = ["SUN", "MON", "TUES", "WED", "THU", "FRI"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+                <div class="forcast-day">${day}</div>
+                <div class="forecast-icons">
+                  <i
+                    class="fa-solid fa-cloud-showers-heavy"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+                <div class="forecast-temperatures">51° | 42°</div>
+              </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div></h2>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 let fahrenheitTemp = null;
