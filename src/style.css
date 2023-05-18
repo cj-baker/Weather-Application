@@ -5,14 +5,15 @@ body {
   color: whitesmoke;
 }
 h1 {
-  margin-bottom: 80px;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .container {
   display: block;
   margin: 50px auto;
   margin-bottom: 5px;
+  width: fit-content;
+  height: fit-content;
   text-shadow: 2px 2px rgb(18, 35, 56);
   border-style: solid;
   border-color: whitesmoke;
@@ -57,9 +58,7 @@ h1 {
 .current-location {
   line-height: 70%;
 }
-#main-icon {
-  font-size: 130px;
-}
+
 .current-temp {
   font-size: 72px;
 }
@@ -68,11 +67,22 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+#main-icon {
+  margin-left: 30px;
+  margin-right: 50px;
+  font-size: 130px;
+}
 #current-location-button {
   font-size: smaller;
-  height: 34px;
+  height: min-content;
   border-color: rgb(33, 64, 101);
   box-shadow: 2px 2px rgb(33, 64, 101, 70%);
+}
+.weekly-weather {
+  margin: 30px auto;
+}
+.week-icons {
+  font-size: 40px;
 }
 .source-link {
   display: block;
