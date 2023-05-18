@@ -73,7 +73,7 @@ h1 {
   font-size: 130px;
 }
 #current-location-button {
-  font-size: smaller;
+  font-size: 10px;
   height: min-content;
   border-color: rgb(33, 64, 101);
   box-shadow: 2px 2px rgb(33, 64, 101, 70%);
