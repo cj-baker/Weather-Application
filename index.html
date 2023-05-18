@@ -16,142 +16,155 @@
   </head>
   <body>
     <div class="container">
-      <div class="row g-1 settings">
-        <form id="city-form" class="col-8">
-          <div class="p-3">
-            <div class="input-group mb-3">
-              <input
-                id="city-input"
-                type="text"
-                class="form-control search-bar"
-                placeholder="Search for a city"
-                aria-label="Search for a city"
-                aria-describedby="basic-addon2"
-                autocomplete="off"
-                autofocus="on"
-              />
-              <div class="input-group-append">
-                <button class="btn search-button" type="submit">
-                  <i
-                    class="fa-solid fa-magnifying-glass"
-                    style="color: #ffffff"
-                  ></i>
-                </button>
+      <div class="content">
+        <div class="row g-1 settings">
+          <form id="city-form" class="col-8">
+            <div class="p-3">
+              <div class="input-group mb-3">
+                <input
+                  id="city-input"
+                  type="text"
+                  class="form-control search-bar"
+                  placeholder="Search for a city"
+                  aria-label="Search for a city"
+                  aria-describedby="basic-addon2"
+                  autocomplete="off"
+                  autofocus="on"
+                />
+                <div class="input-group-append">
+                  <button class="btn search-button" type="submit">
+                    <i
+                      class="fa-solid fa-magnifying-glass"
+                      style="color: #ffffff"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col-2">
+            <div class="p-3">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                id="current-location-button"
+              >
+                Current Location
+              </button>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="p-3">
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked
+                />
+                <label
+                  class="btn fahrenheit"
+                  for="btnradio1"
+                  id="fahrenheit-button"
+                  >F°</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label class="btn celsius" for="btnradio2" id="celsius-button"
+                  >C°</label
+                >
               </div>
             </div>
           </div>
-        </form>
-        <div class="col-2">
-          <div class="p-3">
-            <button
-              type="button"
-              class="btn btn-secondary btn-sm"
-              id="current-location-button"
-            >
-              Current Location
-            </button>
-          </div>
         </div>
-        <div class="col-2">
-          <div class="p-3">
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Basic radio toggle button group"
-            >
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio"
-                id="btnradio1"
-                autocomplete="off"
-                checked
-              />
-              <label
-                class="btn fahrenheit"
-                for="btnradio1"
-                id="fahrenheit-button"
-                >F°</label
-              >
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="btnradio"
-                id="btnradio2"
-                autocomplete="off"
-              />
-              <label class="btn celsius" for="btnradio2" id="celsius-button"
-                >C°</label
-              >
+        <h1>
+          <div class="row g-3 current-weather">
+            <div class="col-4">
+              <span class="current-range" id="current-high">H: 47°</span>
+              <span class="current-range" id="current-low">L: 34°</span>
+              <div id="current-location">Vancouver</div>
+              <div class="weather-details" id="weather-condition">
+                Partly Cloudy
+              </div>
+              <div class="weather-details" id="wind-speed">Wind: 4 mph</div>
+            </div>
+            <div class="col-4">
+              <div>
+                <i
+                  class="fa-solid fa-cloud-sun-rain fa-beat-fade"
+                  id="main-icon"
+                ></i>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="current-temp" id="current-temp">43°</div>
+              <div class="current-day">Sunday</div>
+              <div class="current-time">10:46 AM PT</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <h1>
-        <div class="row g-3 current-weather">
-          <div class="col-4">
-            <span class="current-range" id="current-high">H: 47°</span>
-            <span class="current-range" id="current-low">L: 34°</span>
-            <div id="current-location">Vancouver</div>
-            <div class="weather-details" id="weather-condition">
-              Partly Cloudy
+        </h1>
+        <div class="weekly-weather" id="forecast">
+          <h2>
+            <div class="row g-5">
+              <div class="col">
+                <div class="forcast-day">MON</div>
+                <div class="forecast-icons">
+                  <i
+                    class="fa-solid fa-cloud-showers-heavy"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+                <div class="forecast-temperatures">51° | 42°</div>
+              </div>
+              <div class="col">
+                <div class="forcast-day">TUES</div>
+                <div class="forecast-icons">
+                  <i
+                    class="fa-solid fa-cloud-showers-heavy"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+                <div class="forecast-temperatures">51° | 38°</div>
+              </div>
+              <div class="col">
+                <div class="forcast-day">WED</div>
+                <div class="forecast-icons">
+                  <i
+                    class="fa-solid fa-cloud-sun-rain"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+                <div class="forecast-temperatures">53° | 37°</div>
+              </div>
+              <div class="col">
+                <div class="forcast-day">THU</div>
+                <div class="forecast-icons">
+                  <i class="fa-solid fa-cloud-showers-heavy"></i>
+                </div>
+                <div class="forecast-temperatures">56° | 38°</div>
+              </div>
+              <div class="col">
+                <div class="forcast-day">FRI</div>
+                <div class="forecast-icons">
+                  <i class="fa-solid fa-cloud-sun" style="color: #ffffff"></i>
+                </div>
+                <div class="forecast-temperatures">61° | 41°</div>
+              </div>
             </div>
-            <div class="weather-details" id="wind-speed">Wind: 4 mph</div>
-          </div>
-          <div class="col-4">
-            <div>
-              <i
-                class="fa-solid fa-cloud-sun-rain fa-beat-fade"
-                id="main-icon"
-              ></i>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="current-temp" id="current-temp">43°</div>
-            <div class="current-day">Sunday</div>
-            <div class="current-time">10:46 AM PT</div>
-          </div>
-        </div>
-      </h1>
-      <div class="weekly-weather">
-        <h2>
-          <div class="row week-days">
-            <div class="col">MON</div>
-            <div class="col">TUES</div>
-            <div class="col">WED</div>
-            <div class="col">THU</div>
-            <div class="col">FRI</div>
-          </div>
-        </h2>
-        <div class="row week-icons">
-          <div class="col">
-            <i
-              class="fa-solid fa-cloud-showers-heavy"
-              style="color: #ffffff"
-            ></i>
-          </div>
-          <div class="col">
-            <i
-              class="fa-solid fa-cloud-showers-heavy"
-              style="color: #ffffff"
-            ></i>
-          </div>
-          <div class="col">
-            <i class="fa-solid fa-cloud-sun-rain" style="color: #ffffff"></i>
-          </div>
-          <div class="col"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
-          <div class="col">
-            <i class="fa-solid fa-cloud-sun" style="color: #ffffff"></i>
-          </div>
-        </div>
-        <div class="row week-temps">
-          <div class="col">51° | 42°</div>
-          <div class="col">51° | 38°</div>
-          <div class="col">53° | 37°</div>
-          <div class="col">56° | 38°</div>
-          <div class="col">61° | 41°</div>
+          </h2>
         </div>
       </div>
     </div>

@@ -7,40 +7,10 @@ function showPosition(position) {
   let latitude = position.coords.latitude;
   let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showLocalTemperature);
-}
-function showLocalTemperature(response) {
-  console.log(response);
-  let city = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
-  let high = Math.round(response.data.main.temp_max);
-  let low = Math.round(response.data.main.temp_min);
-  let wind = Math.round(response.data.wind.speed);
-  let condition = response.data.weather[0].description;
-  fahrenheitTemp = response.data.main.temp;
-  document.querySelector("#current-temp").innerHTML = `${temperature}F°`;
-  document.querySelector("#current-location").innerHTML = `${city}`;
-  document.querySelector("#current-high").innerHTML = `H: ${high}°`;
-  document.querySelector("#current-low").innerHTML = `L: ${low}°`;
-  document.querySelector("#wind-speed").innerHTML = `Wind: ${wind} mph`;
-  document.querySelector("#weather-condition").innerHTML = `${condition}`;
-  resetRadioButton();
+  axios.get(`${apiUrl}`).then(showTemperature);
 }
 
-function searchCity(city) {
-  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showCityTemperature);
-}
-
-function submitCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
-  resetRadioButton();
-}
-
-function showCityTemperature(response) {
+function showTemperature(response) {
   let city = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let high = Math.round(response.data.main.temp_max);
@@ -55,6 +25,20 @@ function showCityTemperature(response) {
   document.querySelector("#wind-speed").innerHTML = `Wind: ${wind} mph`;
   document.querySelector("#weather-condition").innerHTML = `${condition}`;
   updateIcon(response);
+  resetRadioButton();
+}
+
+function searchCity(city) {
+  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showTemperature);
+}
+
+function submitCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
+  resetRadioButton();
 }
 
 function updateIcon(response) {
@@ -106,7 +90,10 @@ function resetRadioButton() {
   radioButton.checked = true;
 }
 
-searchCity("Vancouver");
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML;
+}
 
 let fahrenheitTemp = null;
 
@@ -142,3 +129,6 @@ currentTime.innerHTML = now.toLocaleTimeString([], {
 
 let getCurrentLocation = document.querySelector("#current-location-button");
 getCurrentLocation.addEventListener("click", getLocalTemp);
+
+searchCity("Vancouver");
+displayForecast();

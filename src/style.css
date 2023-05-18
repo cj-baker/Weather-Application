@@ -28,6 +28,10 @@ h1 {
   );
   box-shadow: 5px 5px rgb(18, 35, 56);
 }
+.content {
+  margin-right: 50px;
+  margin-left: 50px;
+}
 .search-bar,
 .search-button {
   box-shadow: 2px 2px rgb(33, 64, 101, 70%);
@@ -48,7 +52,8 @@ h1 {
 
 .current-day,
 .current-time,
-.current-range {
+.current-range,
+.forecast-temperatures {
   font-size: 18px;
 }
 .weather-details {
@@ -81,9 +86,10 @@ h1 {
 .weekly-weather {
   margin: 30px auto;
 }
-.week-icons {
+.forecast-icons {
   font-size: 40px;
 }
+
 .source-link {
   display: block;
   margin: 0 auto;
