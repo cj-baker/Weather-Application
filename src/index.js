@@ -1,5 +1,15 @@
 function getLocalTemp() {
   navigator.geolocation.getCurrentPosition(showPosition);
+  navigator.geolocation.getCurrentPosition(getLocalForecast);
+}
+function getLocalForecast(position) {
+  console.log(position);
+  let longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
+  let apiKey = "ef8b3fdo4bbe83bb3e23006at2b0a458";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(displayForecast);
+  console.log(apiUrl);
 }
 
 function showPosition(position) {
@@ -38,7 +48,38 @@ function submitCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   searchCity(city);
+  searchCityForecast(city);
   resetRadioButton();
+}
+
+function searchCityForecast(city) {
+  let apiKey = "ef8b3fdo4bbe83bb3e23006at2b0a458";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<h2><div class="row">`;
+  let days = ["SUN", "MON", "TUES", "WED", "THU", "FRI"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+                <div class="forcast-day">${day}</div>
+                <div class="forecast-icons">
+                  <i
+                    class="fa-solid fa-cloud-showers-heavy"
+                    style="color: #ffffff"
+                  ></i>
+                </div>
+                <div class="forecast-temperatures">51° | 42°</div>
+              </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div></h2>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 function updateIcon(response) {
@@ -90,29 +131,6 @@ function resetRadioButton() {
   radioButton.checked = true;
 }
 
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
-  let forecastHTML = `<h2><div class="row">`;
-  let days = ["SUN", "MON", "TUES", "WED", "THU", "FRI"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-                <div class="forcast-day">${day}</div>
-                <div class="forecast-icons">
-                  <i
-                    class="fa-solid fa-cloud-showers-heavy"
-                    style="color: #ffffff"
-                  ></i>
-                </div>
-                <div class="forecast-temperatures">51° | 42°</div>
-              </div>`;
-  });
-
-  forecastHTML = forecastHTML + `</div></h2>`;
-  forecast.innerHTML = forecastHTML;
-}
-
 let fahrenheitTemp = null;
 
 let celsiusTemp = null;
@@ -149,4 +167,3 @@ let getCurrentLocation = document.querySelector("#current-location-button");
 getCurrentLocation.addEventListener("click", getLocalTemp);
 
 searchCity("Vancouver");
-displayForecast();
