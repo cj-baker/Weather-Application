@@ -45,10 +45,6 @@ h1 {
   background-color: #5ba8c4;
   border-color: rgb(33, 64, 101);
 }
-.btn-group {
-  text-shadow: 2px 2px rgb(18, 35, 56, 50%);
-  font-weight: bolder;
-}
 
 .current-day,
 .current-time,
@@ -59,9 +55,6 @@ h1 {
 .weather-details {
   font-size: 15px;
   text-transform: capitalize;
-}
-.current-location {
-  line-height: 70%;
 }
 
 .current-temp {
@@ -78,8 +71,9 @@ h1 {
   font-size: 130px;
 }
 #current-location-button {
-  font-size: 10px;
+  font-size: 12px;
   height: min-content;
+  padding: 8px;
   border-color: rgb(33, 64, 101);
   box-shadow: 2px 2px rgb(33, 64, 101, 70%);
 }

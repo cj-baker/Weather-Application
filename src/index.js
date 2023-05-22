@@ -35,7 +35,6 @@ function showTemperature(response) {
   document.querySelector("#wind-speed").innerHTML = `Wind: ${wind} mph`;
   document.querySelector("#weather-condition").innerHTML = `${condition}`;
   updateIcon(response);
-  resetRadioButton();
   getCityForecast(response.data.coord);
 }
 
@@ -49,7 +48,6 @@ function submitCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   searchCity(city);
-  resetRadioButton();
 }
 
 function formatDay(timestamp) {
@@ -142,10 +140,6 @@ function displayCelsius() {
   let celsiusTemp = (5 / 9) * fahrenheitTemp - 32;
   currentTemp.innerHTML = `${Math.round(celsiusTemp)}°C`;
 }
-function resetRadioButton() {
-  let radioButton = document.getElementById("btnradio1");
-  radioButton.checked = true;
-}
 
 let fahrenheitTemp = null;
 
@@ -153,12 +147,6 @@ let celsiusTemp = null;
 
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", submitCity);
-
-let fahrenheit = document.querySelector("#fahrenheit-button");
-fahrenheit.addEventListener("click", displayFahrenheit);
-
-let celsius = document.querySelector("#celsius-button");
-celsius.addEventListener("click", displayCelsius);
 
 let now = new Date();
 let currentDay = document.querySelector("div.current-day");
@@ -182,4 +170,4 @@ currentTime.innerHTML = now.toLocaleTimeString([], {
 let getCurrentLocation = document.querySelector("#current-location-button");
 getCurrentLocation.addEventListener("click", getLocalTemp);
 
-searchCity("Vancouver");
+searchCity("Portland");
