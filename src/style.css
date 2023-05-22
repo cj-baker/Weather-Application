@@ -12,6 +12,7 @@ h1 {
   display: block;
   margin: 50px auto;
   margin-bottom: 5px;
+  min-width: 700px;
   width: fit-content;
   height: fit-content;
   text-shadow: 2px 2px rgb(18, 35, 56);
