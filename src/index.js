@@ -6,8 +6,8 @@ function getLocalForecast(position) {
   console.log(position);
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
-  let apiKey = "ef8b3fdo4bbe83bb3e23006at2b0a458";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=imperial`;
+  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(displayForecast);
   console.log(apiUrl);
 }
@@ -36,6 +36,7 @@ function showTemperature(response) {
   document.querySelector("#weather-condition").innerHTML = `${condition}`;
   updateIcon(response);
   resetRadioButton();
+  getCityForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -48,38 +49,53 @@ function submitCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   searchCity(city);
-  searchCityForecast(city);
   resetRadioButton();
 }
 
-function searchCityForecast(city) {
-  let apiKey = "ef8b3fdo4bbe83bb3e23006at2b0a458";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
-  axios.get(`${apiUrl}`).then(displayForecast);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function getCityForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "1098686bcbb41f221c2aec962bdfe6fb";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecast = document.querySelector("#forecast");
+  console.log(response.data);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<h2><div class="row">`;
-  let days = ["SUN", "MON", "TUES", "WED", "THU", "FRI"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-                <div class="forcast-day">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+                <div class="forcast-day">${formatDay(forecastDay.dt)}</div>
                 <div class="forecast-icons">
-                  <i
-                    class="fa-solid fa-cloud-showers-heavy"
-                    style="color: #ffffff"
-                  ></i>
+                  <img src="https://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"/>
                 </div>
-                <div class="forecast-temperatures">51° | 42°</div>
+                <div class="forecast-temperatures">${Math.round(
+                  forecastDay.temp.max
+                )}° | ${Math.round(forecastDay.temp.min)}°</div>
               </div>`;
+    }
   });
-
   forecastHTML = forecastHTML + `</div></h2>`;
-  forecast.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;
+  //updateForecastIcons();
+}
+function updateForecastIcons() {
+  let icon = document.querySelectorAll("forecast-icons");
+  console.log(icon);
 }
 
 function updateIcon(response) {
