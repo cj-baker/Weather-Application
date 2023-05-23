@@ -147,6 +147,7 @@ let celsiusTemp = null;
 
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", submitCity);
+
 function displayDate() {
   let now = new Date();
   let currentDay = document.querySelector("div.current-day");
@@ -167,6 +168,7 @@ function displayDate() {
     minute: "2-digit",
   });
 }
+displayDate();
 setInterval(displayDate, 1000);
 
 let getCurrentLocation = document.querySelector("#current-location-button");
