@@ -147,25 +147,27 @@ let celsiusTemp = null;
 
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", submitCity);
-
-let now = new Date();
-let currentDay = document.querySelector("div.current-day");
-let currentTime = document.querySelector("div.current-time");
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-currentDay.innerHTML = day;
-currentTime.innerHTML = now.toLocaleTimeString([], {
-  hour: "2-digit",
-  minute: "2-digit",
-});
+function displayDate() {
+  let now = new Date();
+  let currentDay = document.querySelector("div.current-day");
+  let currentTime = document.querySelector("div.current-time");
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  currentDay.innerHTML = day;
+  currentTime.innerHTML = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+setInterval(displayDate, 1000);
 
 let getCurrentLocation = document.querySelector("#current-location-button");
 getCurrentLocation.addEventListener("click", getLocalTemp);
